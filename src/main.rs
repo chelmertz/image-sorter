@@ -47,6 +47,9 @@ pub struct Opt {
     )]
     input: Vec<PathBuf>,
 
+    #[structopt(short, long, help = "Search for images recursively in the input folders")]
+    recurse: bool,
+
     #[structopt(
         short,
         long,
@@ -70,6 +73,7 @@ fn main() -> Result<()> {
     let mut terminal = Terminal::new(backend)?;
 
     let mut image_display = ImageDisplay::new()?;
+
 
     loop {
         terminal.draw(|f| {
